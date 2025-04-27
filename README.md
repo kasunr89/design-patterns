@@ -1,1 +1,1 @@
-# design-patterns
+# Trying out Design Patterns for fun
