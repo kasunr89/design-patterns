@@ -56,7 +56,6 @@ export default class Logger {
 
 	public info(message: string) {
 		this.log(LogLevel.INFO, message);
-		// var x = 19;
 	}
 
 	public warn(message: string) {
