@@ -48,58 +48,57 @@ class ChickenSandwich implements ISandwich {
 	}
 }
 
-abstract class BurgerRestaurant {
-	orderBurger() {
+abstract class AbstractBurger {
+	orderBurger(): IBurger {
 		const burger = this.createBurger();
 		burger.prepare();
+
+		return burger;
 	}
 
 	abstract createBurger(): IBurger;
 }
 
-abstract class SandwichRestaurant {
-	orderSandwich() {
+abstract class AbstractSandwich {
+	orderSandwich(): ISandwich {
 		const sandwich = this.createSandwich();
 		sandwich.assemble();
+
+		return sandwich;
 	}
 
 	abstract createSandwich(): ISandwich;
 }
 
-class ChickenBurgerRestaurant extends BurgerRestaurant {
+class ChickenBurgerMaker extends AbstractBurger {
 	createBurger(): IBurger {
 		return new ChickenBurger();
 	}
 }
 
-class VegetableBurgerRestaurant extends BurgerRestaurant {
+class VegetableBurgerMaker extends AbstractBurger {
 	createBurger(): IBurger {
 		return new VegetableBurger();
 	}
 }
 
-class TunaSandwichRestaurant extends SandwichRestaurant {
+class TunaSandwichMaker extends AbstractSandwich {
 	createSandwich(): ISandwich {
 		return new TunaSandwich();
 	}
 }
 
-class ChickenSandwichRestaurant extends SandwichRestaurant {
+class ChickenSandwichMaker extends AbstractSandwich {
 	createSandwich(): ISandwich {
 		return new ChickenSandwich();
 	}
 }
 
 export function runRestaurant() {
-	const restaurant = new ChickenBurgerRestaurant();
-	restaurant.orderBurger();
+	const chickenBurger = new ChickenBurgerMaker();
+	chickenBurger.orderBurger();
 
-	const restaurant2 = new VegetableBurgerRestaurant();
-	restaurant2.orderBurger();
-
-	const restaurant3 = new TunaSandwichRestaurant();
-	restaurant3.orderSandwich();
-
-	const restaurant4 = new ChickenSandwichRestaurant();
-	restaurant4.orderSandwich();
+	new VegetableBurgerMaker().orderBurger();
+	new TunaSandwichMaker().orderSandwich();
+	new ChickenSandwichMaker().orderSandwich();
 }
