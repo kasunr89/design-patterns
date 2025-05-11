@@ -3,7 +3,7 @@ import crypto from 'crypto';
 class Document {
 	private _id: string;
 	private _createdAt: string;
-	content?: string;
+	public content?: string;
 
 	constructor() {
 		this._id = crypto.randomUUID();
